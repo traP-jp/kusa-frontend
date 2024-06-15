@@ -768,7 +768,7 @@ const keygraph = {
   ],
 }
 
-keygraph.build("とうしょうこうぎょうだいがく");
+keygraph.build("CTFとうしょうこうぎょうだいがく");
 const disp = () => {
   console.log("key candidate", keygraph.key_candidate())
   console.log("key done", keygraph.key_done())
@@ -779,6 +779,7 @@ const candidate = ref(keygraph.seq_candidates());
 const done = ref(keygraph.seq_done());
 const key_candidate = ref(keygraph.key_candidate());
 const key_done = ref(keygraph.key_done());
+const misstype = ref(0);
 
 // keydownのイベント処理
 document.addEventListener("keydown", (e: KeyboardEvent) => {
@@ -788,15 +789,16 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
     done.value = keygraph.seq_done();
     key_candidate.value = keygraph.key_candidate();
     key_done.value = keygraph.key_done();
+  } else {
+    misstype.value++;
   }
   if (keygraph.is_finished()) {
     // すべての文字をタイプし終わったとき
+    console.log("ok")
   }
   disp();
 });
 disp();
-
-
 </script>
 
 <template>
