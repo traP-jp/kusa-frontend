@@ -10,7 +10,7 @@ const tasks = ref<components['schemas']['task']>([{
     grade: "23B",
     authorName: "Dye",
     updatedAt: "2024/06/15 08:16",
-    citated: "",
+    citated: "引用文",
     image: "",
     stamps: [
       {
@@ -69,6 +69,17 @@ const tasks = ref<components['schemas']['task']>([{
           <p>{{ task.content }}</p>
           <p>{{ task.yomi }}</p>
         </span>
+        <div class="_messageEmbeddingsList" v-if="task.citated!=''">
+          <div class="_messageEmbedding">
+            <div class="_messageEmbeddingContents">
+              <div class="_markdownContainer">
+                <span class="markdown-body-Embedding">
+                  <p>{{ task.citated }}</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="_stampWrapper">
@@ -264,5 +275,36 @@ img {
     position: absolute;
     left: 0;
     top: 0;
+}
+._messageEmbeddingsList {
+    margin-top: 16px;
+}
+._messageEmbedding {
+    width: 100%;
+    min-width: 0;
+    padding-left: 16px;
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-color: var(--theme-ui-tertiary-default);
+    overflow: hidden;
+}
+._messageEmbeddingContents {
+    font-size: .875rem;
+    grid-area: message-contents;
+    padding-top: 4px;
+    padding-left: 8px;
+    min-width: 0;
+    position: relative;
+}
+._markdownContainer {
+    max-height: 200px;
+    overflow: clip;
+}
+.markdown-body-Embedding {
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.2;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    line-break: loose;
 }
 </style>
