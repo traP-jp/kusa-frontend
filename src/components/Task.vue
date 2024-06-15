@@ -1,38 +1,97 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { components } from '../openapi.gen.ts'
 
+const tasks = ref<components['schemas']['task']>([{
+    content: "東京科学大学",
+    yomi: "とうきょうかがくだいがく", 
+    iconUri: "https://q.trap.jp/api/v3/public/icon/Dye",
+    authorDisplayName: "Dye",
+    grade: "23B",
+    authorName: "Dye",
+    updatedAt: "2024/06/15 08:16",
+    citated: "引用文",
+    image: "",
+    stamps: [
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/Dye",
+        count: 3
+      },
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/ramdos",
+        count: 2
+      },
+    ]
+  },
+  {
+    content: "東京工業大学",
+    yomi: "とうきょうこうぎょうだいがく", 
+    iconUri: "https://q.trap.jp/api/v3/public/icon/Dye",
+    authorDisplayName: "Dye",
+    grade: "23B",
+    authorName: "Dye",
+    updatedAt: "2024/06/15 08:16",
+    citated: "",
+    image: "",
+    stamps: [
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/Dye",
+        count: 2
+      },
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/ramdos",
+        count: 3
+      },
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/anko",
+        count: 3
+      },
+    ]
+  }])
 </script>
 
 <template>
-  <div class="_task">
+  <div class="_task" v-for="task in tasks" :key="task.content">
     <div class="_container">
-      <div class="_userIcon" style="width: 40px; height: 40px; background-image: url(https://q.trap.jp/api/v3/public/icon/Dye);">
-        
+      <div class="_userIcon_wrap" style="width: 40px; height: 40px;">
+        <img class="_userIcon" :src="task.iconUri">
       </div>
       <div class="_messageHeader">
-        <span class="_displayName">Dye</span>
+        <span class="_displayName">{{ task.authorDisplayName }}</span>
         <div class="_body" data-is-grade="true">
-          <span>23B</span>
+          <span>{{ task.grade }}</span>
         </div>
-        <span class="_name">@Dye</span>
-        <span class="_date">08:16</span>
+        <span class="_name">@{{ task.authorName }}</span>
+        <span class="_date">{{ task.updatedAt }}</span>
       </div>
       <div class="_messageContents">
         <span class="markdown-body">
-          <p>二子玉川で乗り換えればええか</p>
+          <p>{{ task.content }}</p>
+          <p>{{ task.yomi }}</p>
         </span>
+        <div class="_messageEmbeddingsList" v-if="task.citated!=''">
+          <div class="_messageEmbedding">
+            <div class="_messageEmbeddingContents">
+              <div class="_markdownContainer">
+                <span class="markdown-body-Embedding">
+                  <p>{{ task.citated }}</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="_stampWrapper">
       <div class="_stampList">
-        <div class="_stamp">
-          <div class="_stamp_body" title=":blue: 八重樫 夏鈴(1) YMAC(1) みな(1)">
+        <div class="_stamp" v-for="stamp in task.stamps" :key="stamp.stampId">
+          <div class="_stamp_body">
             <div class="_stamp_container" style="width: 1.25rem; height: 1.25rem;">
-              <img class="_img" src="https://q.trap.jp/api/v3/public/icon/Dye" alt="blue" draggable="false">
+              <img class="_img" :src="stamp.stampId" draggable="false">
             </div>
               <div class="_count_body">
-                <div class="_dummy">3</div>
-                <div class="_number">3</div>
+                <div class="_dummy">{{ stamp.count }}</div>
+                <div class="_number">{{ stamp.count }}</div>
               </div>
             </div>
           </div>
@@ -180,7 +239,6 @@ div {
     align-items: center;
     padding: .125rem .25rem;
     border-radius: .25rem;
-    cursor: pointer;
     -webkit-user-select: none;
     user-select: none;
     overflow: hidden;
@@ -217,5 +275,36 @@ img {
     position: absolute;
     left: 0;
     top: 0;
+}
+._messageEmbeddingsList {
+    margin-top: 16px;
+}
+._messageEmbedding {
+    width: 100%;
+    min-width: 0;
+    padding-left: 16px;
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-color: var(--theme-ui-tertiary-default);
+    overflow: hidden;
+}
+._messageEmbeddingContents {
+    font-size: .875rem;
+    grid-area: message-contents;
+    padding-top: 4px;
+    padding-left: 8px;
+    min-width: 0;
+    position: relative;
+}
+._markdownContainer {
+    max-height: 200px;
+    overflow: clip;
+}
+.markdown-body-Embedding {
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.2;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    line-break: loose;
 }
 </style>

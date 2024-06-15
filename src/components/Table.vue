@@ -2,10 +2,10 @@
 import { ref } from 'vue';
 
 const items = ref([
-  { rank: 1, image_link: "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftrap.jp%2F&psig=AOvVaw0jvM3DJPi8-HS35d4Qe-wL&ust=1718514604355000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCykfXr3IYDFQAAAAAdAAAAABAE", name: "あんこ", score: 3041 },
-  { rank: 2, image_link: "../assets/vue.svg", name: "あんこ", score: 2041 },
-  { rank: 3, image_link: "../assets/vue.svg", name: "あんこ", score: 2041 },
-  { rank: 4, image_link: "../assets/vue.svg", name: "あんこ", score: 2041 }
+  { rank: 1, image_link: "https://q.trap.jp/api/v3/public/icon/anko", name: "あんこ", score: 3041 },
+  { rank: 2, image_link: "https://q.trap.jp/api/v3/public/icon/anko", name: "あんこ", score: 2041 },
+  { rank: 3, image_link: "https://q.trap.jp/api/v3/public/icon/anko", name: "あんこ", score: 2041 },
+  { rank: 4, image_link: "https://q.trap.jp/api/v3/public/icon/anko", name: "あんこ", score: 2041 }
 ])
 </script>
 

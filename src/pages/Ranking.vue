@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import Table from '@/components/Table.vue'
 </script>
 
 <template>
     <div class="table_container">
-        test
+        <Table></Table>
     </div>
 </template>
 
