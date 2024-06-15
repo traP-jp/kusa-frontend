@@ -25,8 +25,5 @@ defineProps<{ msg: string; link: string }>();
 button:hover {
   background-color: #5487f8;
 }
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
+
 </style>
