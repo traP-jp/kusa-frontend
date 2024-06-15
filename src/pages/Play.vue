@@ -795,6 +795,11 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
   if (keygraph.is_finished()) {
     // すべての文字をタイプし終わったとき
     console.log("ok")
+    keygraph.build("CTFとうしょうこうぎょうだいがく");
+    candidate.value = keygraph.seq_candidates();
+    done.value = keygraph.seq_done();
+    key_candidate.value = keygraph.key_candidate();
+    key_done.value = keygraph.key_done();
   }
   disp();
 });
