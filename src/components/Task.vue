@@ -22,33 +22,58 @@ const tasks = ref<components['schemas']['task']>([{
         count: 2
       },
     ]
+  },
+  {
+    content: "東京工業大学",
+    yomi: "とうきょうこうぎょうだいがく", 
+    iconUri: "https://q.trap.jp/api/v3/public/icon/Dye",
+    authorDisplayName: "Dye",
+    grade: "23B",
+    authorName: "Dye",
+    updatedAt: "2024/06/15 08:16",
+    citated: "",
+    image: "",
+    stamps: [
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/Dye",
+        count: 2
+      },
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/ramdos",
+        count: 3
+      },
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/anko",
+        count: 3
+      },
+    ]
   }])
 </script>
 
 <template>
-  <div class="_task">
+  <div class="_task" v-for="task in tasks" :key="task.content">
     <div class="_container">
       <div class="_userIcon_wrap" style="width: 40px; height: 40px;">
-        <img class="_userIcon" :src="tasks[0].iconUri">
+        <img class="_userIcon" :src="task.iconUri">
       </div>
       <div class="_messageHeader">
-        <span class="_displayName">{{ tasks[0].authorDisplayName }}</span>
+        <span class="_displayName">{{ task.authorDisplayName }}</span>
         <div class="_body" data-is-grade="true">
-          <span>{{ tasks[0].grade }}</span>
+          <span>{{ task.grade }}</span>
         </div>
-        <span class="_name">@{{ tasks[0].authorName }}</span>
-        <span class="_date">{{ tasks[0].updatedAt }}</span>
+        <span class="_name">@{{ task.authorName }}</span>
+        <span class="_date">{{ task.updatedAt }}</span>
       </div>
       <div class="_messageContents">
         <span class="markdown-body">
-          <p>{{ tasks[0].content }}</p>
-          <p>{{ tasks[0].yomi }}</p>
+          <p>{{ task.content }}</p>
+          <p>{{ task.yomi }}</p>
         </span>
       </div>
     </div>
     <div class="_stampWrapper">
       <div class="_stampList">
-        <div class="_stamp" v-for="stamp in tasks[0].stamps" :key="stamp.stampId">
+        <div class="_stamp" v-for="stamp in task.stamps" :key="stamp.stampId">
           <div class="_stamp_body">
             <div class="_stamp_container" style="width: 1.25rem; height: 1.25rem;">
               <img class="_img" :src="stamp.stampId" draggable="false">
@@ -203,7 +228,6 @@ div {
     align-items: center;
     padding: .125rem .25rem;
     border-radius: .25rem;
-    cursor: pointer;
     -webkit-user-select: none;
     user-select: none;
     overflow: hidden;
