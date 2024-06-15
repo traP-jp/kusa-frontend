@@ -28,7 +28,7 @@ import { ref } from 'vue'
         <div class="_stamp">
           <div class="_stamp_body" title=":blue: 八重樫 夏鈴(1) YMAC(1) みな(1)">
             <div class="_stamp_container" style="width: 1.25rem; height: 1.25rem;">
-              <img class="_img" src="https://q.trap.jp/api/v3/files/95e605c3-484e-421f-9092-0befe9eb6f1c" alt="blue" draggable="false">
+              <img class="_img" src="https://q.trap.jp/api/v3/public/icon/Dye" alt="blue" draggable="false">
             </div>
               <div class="_count_body">
                 <div class="_dummy">3</div>
