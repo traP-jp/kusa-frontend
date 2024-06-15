@@ -7,6 +7,12 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --theme-ui-primary-default: #49535B;
+  --theme-ui-secondary-default: #6B7D8A;
+  --theme-background-secondary-default: #F0F2F5;
+  --theme-background-tertiary-default: #E2E5E9;
+  --specific-count-text: rgba(73, 83, 91, 0.6);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

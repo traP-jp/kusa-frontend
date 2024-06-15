@@ -51,6 +51,7 @@ import { ref } from 'vue'
 }
 p {
   margin: 0;
+  text-align: left;
 }
 div {
     display: block;

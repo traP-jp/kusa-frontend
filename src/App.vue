@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
 import Button from "./components/Button.vue";
+import Task from "./components/Task.vue";
 </script>
 
 <template>
+  <Task></Task>
   <h1 class="title">traQタイピング</h1>
   
   <div class="button_container">
