@@ -5,7 +5,6 @@ import Task from "./components/Task.vue";
 </script>
 
 <template>
-  <Task></Task>
   <h1 class="title">traQタイピング</h1>
   
   <div class="button_container">
