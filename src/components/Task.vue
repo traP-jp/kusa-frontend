@@ -1,38 +1,61 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { components } from '../openapi.gen.ts'
 
+const tasks = ref<components['schemas']['task']>([{
+    content: "東京科学大学",
+    yomi: "とうきょうかがくだいがく", 
+    iconUri: "https://q.trap.jp/api/v3/public/icon/Dye",
+    authorDisplayName: "Dye",
+    grade: "23B",
+    authorName: "Dye",
+    updatedAt: "2024/06/15 08:16",
+    citated: "",
+    image: "",
+    stamps: [
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/Dye",
+        count: 3
+      },
+      {
+        stampId: "https://q.trap.jp/api/v3/public/icon/ramdos",
+        count: 2
+      },
+    ]
+  }])
 </script>
 
 <template>
   <div class="_task">
     <div class="_container">
-      <div class="_userIcon" style="width: 40px; height: 40px; background-image: url(https://q.trap.jp/api/v3/public/icon/Dye);">
-        
+      <div class="_userIcon_wrap" style="width: 40px; height: 40px;">
+        <img class="_userIcon" :src="tasks[0].iconUri">
       </div>
       <div class="_messageHeader">
-        <span class="_displayName">Dye</span>
+        <span class="_displayName">{{ tasks[0].authorDisplayName }}</span>
         <div class="_body" data-is-grade="true">
-          <span>23B</span>
+          <span>{{ tasks[0].grade }}</span>
         </div>
-        <span class="_name">@Dye</span>
-        <span class="_date">08:16</span>
+        <span class="_name">@{{ tasks[0].authorName }}</span>
+        <span class="_date">{{ tasks[0].updatedAt }}</span>
       </div>
       <div class="_messageContents">
         <span class="markdown-body">
-          <p>二子玉川で乗り換えればええか</p>
+          <p>{{ tasks[0].content }}</p>
+          <p>{{ tasks[0].yomi }}</p>
         </span>
       </div>
     </div>
     <div class="_stampWrapper">
       <div class="_stampList">
-        <div class="_stamp">
-          <div class="_stamp_body" title=":blue: 八重樫 夏鈴(1) YMAC(1) みな(1)">
+        <div class="_stamp" v-for="stamp in tasks[0].stamps" :key="stamp.stampId">
+          <div class="_stamp_body">
             <div class="_stamp_container" style="width: 1.25rem; height: 1.25rem;">
-              <img class="_img" src="https://q.trap.jp/api/v3/public/icon/Dye" alt="blue" draggable="false">
+              <img class="_img" :src="stamp.stampId" draggable="false">
             </div>
               <div class="_count_body">
-                <div class="_dummy">3</div>
-                <div class="_number">3</div>
+                <div class="_dummy">{{ stamp.count }}</div>
+                <div class="_number">{{ stamp.count }}</div>
               </div>
             </div>
           </div>
