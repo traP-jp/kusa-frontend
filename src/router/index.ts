@@ -31,13 +31,13 @@ const routes: RouteRecordRaw[] = [
   //   name: 'CreateRoom',
   //   component: () => import('@/pages/CreateRoom.vue'),
   // },
-  // {
-  //   // 404 page
-  //   path: '/:pathMatch(.*)*',
-  //   name: 'NotFound',
-  //   component: () => import('@/pages/NotFound.vue'),
-  // }
-];
+  {
+    // 404 page
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('@/pages/NotFound.vue'),
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(),

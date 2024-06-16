@@ -1086,13 +1086,14 @@ disp();
   flex-direction: column;
 }
 
-.layoutContainer{
-    position: relative;
-    height: 100%;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
+.layoutContainer {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
+
 .taskContainer {
   color: var(--theme-ui-primary-default);
   display: flex;
