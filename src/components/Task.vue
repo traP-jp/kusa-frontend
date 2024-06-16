@@ -21,7 +21,7 @@ defineProps<{ tasks: components['schemas']['task'] }>();
       <div class="_messageContents">
         <span class="markdown-body">
           <p>{{ task.content }}</p>
-          <p>{{ task.yomi }}</p>
+          <!-- <p>{{ task.yomi }}</p> -->
         </span>
         <div class="_messageEmbeddingsList" v-if="task.citated != ''">
           <div class="_messageEmbedding">
@@ -58,6 +58,7 @@ defineProps<{ tasks: components['schemas']['task'] }>();
 ._task {
   font-family: Inter, "M PLUS 1p", Avenir, Helvetica Neue, Helvetica, Arial, Hiragino Sans, ヒラギノ角ゴシック, YuGothic, Yu Gothic, メイリオ, Meiryo, ＭＳ Ｐゴシック, MS PGothic, sans-serif;
   color: var(--theme-ui-primary-default);
+  overflow-y: scroll;
 }
 
 * {
