@@ -1,30 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { components } from '@/openapi.gen';
 
-const items = ref([
-  { rank: 1, image_link: "https://q.trap.jp/api/v3/public/icon/anko", name: "あんこ", score: 3041 },
-  { rank: 2, image_link: "https://q.trap.jp/api/v3/public/icon/anko", name: "あんこ", score: 2041 },
-  { rank: 3, image_link: "https://q.trap.jp/api/v3/public/icon/anko", name: "あんこ", score: 2041 },
-  { rank: 4, image_link: "https://q.trap.jp/api/v3/public/icon/anko", name: "あんこ", score: 2041 }
-])
+defineProps<{ columns: components['schemas']['ranking'] }>();
 </script>
 
 <template>
   <div class="table_container">
-    <div v-for="item in items" class="row_container">
+    <div v-for="item in columns" class="row_container">
       <div class="row_rank">
         <img src="../assets/rank_1.png" height="32" v-if="item.rank == 1">
         <img src="../assets/rank_2.png" height="32" v-if="item.rank == 2">
         <img src="../assets/rank_3.png" height="32" v-if="item.rank == 3">
-        <span v-if="item.rank > 3">{{ item.rank }}</span>
+        <span v-if="!item.rank || item.rank > 3">{{ item.rank }}</span>
       </div>
       <div class="row_user">
-        <img :src="item.image_link" height="32px">
+        <img :src="item.iconUri" height="32px">
         <span class="row_name">
-          {{ item.name }}
+          {{ item.userName }}
         </span>
       </div>
-      <span class="row_score">{{ item.score.toLocaleString() }}</span>
+      <span class="row_score">{{ item.score?.toLocaleString() }}</span>
     </div>
   </div>
 </template>
