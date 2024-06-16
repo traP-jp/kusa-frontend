@@ -54,6 +54,87 @@ paths:
                 $ref: "#/components/schemas/task"
         "400":
           description: 正しくないリクエスト
+  /me:
+    get:
+      summary: 自身の情報を取得
+      operationId: getMe
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+        "400":
+          description: 正しくないリクエスト
+  /stamps/{fileId}:
+    parameters:
+      - name: fileId
+        in: path
+        schema:
+          type: string
+          format: uuid
+          example: "6308a443-69f0-45e5-866f-56cc2c93578f"
+        required: true
+    get:
+      summary: ファイルをダウンロード
+      responses:
+        "200":
+          description: ok
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  /rankings:
+    get:
+      summary: ランキングを取得
+      description: ランキングを取得
+      operationId: getRanking
+      parameters:
+        - name: count
+          in: query
+          description: 取得する個数（上位）
+          required: true
+          schema:
+            type: integer
+            example: 10
+        - name: level
+          in: query
+          description: 難易度
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ranking"
+        "400":
+          description: 正しくないリクエスト
+    post:
+      summary: ランキングに登録
+      description: ランキングに登録
+      operationId: postRanking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/gameResult"
+      responses:
+        "204":
+          description: 成功
+        "400":
+          description: 正しくないリクエスト
+
 components:
   schemas:
     ping:
@@ -73,7 +154,7 @@ components:
           yomi:
             type: string
             example: とうきょうかがくだいがく
-          iconUri: 
+          iconUri:
             type: string
             example: https://q.trap.jp/api/v3/public/icon/ramdos
           authorDisplayName:
@@ -96,7 +177,7 @@ components:
             type: string
             example: "https://q.trap.jp/files/b8050d58-17d9-4c84-a910-b670cb3b77bc"
           stamps:
-            $ref: '#/components/schemas/stamp'
+            $ref: "#/components/schemas/stamp"
     stamp:
       title: MessageStamp
       type: array
@@ -111,3 +192,52 @@ components:
             type: integer
             description: スタンプ数
             format: integer
+    user:
+      type: object
+      properties:
+        name:
+          type: string
+          example: anko
+        iconUri:
+          type: string
+          example: https://q.trap.jp/api/v3/public/icon/ramdos
+    ranking:
+      type: array
+      items:
+        type: object
+        properties:
+          rank:
+            type: integer
+            example: 1
+          userName:
+            type: string
+            example: "kavos"
+          score:
+            type: number
+            example: 10.5
+          level:
+            type: integer
+            example: 1
+          timeStamp:
+            type: string
+            format: date-time
+            example: "2006/01/02 15:04"
+          iconUri:
+            type: string
+            example: https://q.trap.jp/api/v3/public/icon/ramdos
+    gameResult:
+      type: object
+      properties:
+        userName:
+          type: string
+          example: "kavos"
+        score:
+          type: number
+          example: 10.5
+        level:
+          type: integer
+          example: 1
+        timeStamp:
+          type: string
+          format: date-time
+          example: "2006/01/02 15:04"
