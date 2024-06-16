@@ -810,14 +810,13 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
       key_done: keygraph.key_done()
     }
   } else {
-    score.value -= 10;
     misstype.value++;
   }
   if (keygraph.is_finished()) {
     // すべての文字をタイプし終わったとき
     i++;
     show_messages.value.push(all_messages[i]);
-    if (i == all_messages.length) {
+    if (i == all_messages.length - 1) {
       router.push({ name: 'Result' })
     }
     keygraph.build(all_messages[i].yomi);
