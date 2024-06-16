@@ -16,7 +16,7 @@ const client = createClient<paths>(
     baseUrl: "https://kusa.trap.show/api"
   });
 
-const { data, error } = await client.GET("/rankings", {
+const { data } = await client.GET("/rankings", {
   params: {
     query: { count: 10, level: 1 }
   }
