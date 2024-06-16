@@ -3,17 +3,34 @@ import Button from "@/components/Button.vue";
 </script>
 
 <template>
-  <h2 class="sub_title">traQ 厳選投稿！</h2>
-  <h1 class="title">草タイピング</h1>
+  <div class="container">
+    <h2 class="sub_title">traQ 厳選投稿！</h2>
+    <h1 class="title">草タイピング</h1>
 
-  <div class="button_container">
-    <Button msg="easy" link="https://google.com"></Button>
-    <Button msg="hard" link="https://vuejs.org/"></Button>
-    <Button msg="ランキング" link="https://vuejs.org/"></Button>
+    <div class="button_container">
+      <router-link to="/play">
+        <Button msg="easy" link=""></Button>
+      </router-link>
+      <router-link to="/play">
+        <Button msg="hard" link=""></Button>
+      </router-link>
+      <router-link to="/ranking">
+        <Button msg="ランキング" link=""></Button>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  width: 100%;
+  margin-top: 200px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
