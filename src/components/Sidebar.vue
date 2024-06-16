@@ -7,6 +7,8 @@ defineProps<{
   score: number
 }>()
 
+console.log("Sidebar")
+
 </script>
 
 <template>

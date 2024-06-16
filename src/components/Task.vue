@@ -2,6 +2,8 @@
 import { components } from '../openapi.gen.ts'
 
 defineProps<{ tasks: components['schemas']['task'] }>();
+
+console.log("Task")
 </script>
 
 <template>
