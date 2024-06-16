@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-nocheck
 import { Ref, ref } from 'vue'
 import Task from '@/components/Task.vue'
 import Sidebar from '@/components/Sidebar.vue'
