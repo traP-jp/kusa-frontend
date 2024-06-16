@@ -3,29 +3,39 @@ import Button from "@/components/Button.vue";
 </script>
 
 <template>
-  <div class="container">
-    <h2 class="sub_title">traQ 厳選投稿！</h2>
-    <h1 class="title">草タイピング</h1>
+  <div class="background">
+    <div class="container">
+      <h2 class="sub_title">traQ 厳選投稿！</h2>
+      <h1 class="title">草タイピング</h1>
 
-    <div class="button_container">
-      <router-link to="/play">
-        <Button msg="easy" link=""></Button>
-      </router-link>
-      <router-link to="/play">
-        <Button msg="hard" link=""></Button>
-      </router-link>
-      <router-link to="/ranking">
-        <Button msg="ランキング" link=""></Button>
-      </router-link>
+      <div class="button_container">
+        <router-link to="/play">
+          <Button msg="easy" link=""></Button>
+        </router-link>
+        <router-link to="/play">
+          <Button msg="hard" link=""></Button>
+        </router-link>
+        <router-link to="/ranking">
+          <Button msg="ランキング" link=""></Button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.background {
+  width: 100%;
+  height: 100vh;
+  background-image: url('@/assets/image.png');
+  background-size: 100%;
+  background-position: bottom;
+  object-fit: cover;
+}
+
 .container {
   display: flex;
-  width: 100%;
-  margin-top: 200px;
+  padding-top: 200px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
