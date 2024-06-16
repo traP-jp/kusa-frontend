@@ -19,6 +19,53 @@ export interface paths {
      */
     get: operations["getTasks"];
   };
+  "/me": {
+    /** 自身の情報を取得 */
+    get: operations["getMe"];
+  };
+  "/stamps/{fileId}": {
+    /** ファイルをダウンロード */
+    get: {
+      parameters: {
+        path: {
+          fileId: string;
+        };
+      };
+      responses: {
+        /** @description ok */
+        200: {
+          content: {
+            "application/octet-stream": string;
+          };
+        };
+        /** @description Forbidden */
+        403: {
+          content: never;
+        };
+        /** @description Not Found */
+        404: {
+          content: never;
+        };
+      };
+    };
+    parameters: {
+      path: {
+        fileId: string;
+      };
+    };
+  };
+  "/rankings": {
+    /**
+     * ランキングを取得
+     * @description ランキングを取得
+     */
+    get: operations["getRanking"];
+    /**
+     * ランキングに登録
+     * @description ランキングに登録
+     */
+    post: operations["postRanking"];
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -66,6 +113,42 @@ export interface components {
          */
         count?: number;
       }[];
+    user: {
+      /** @example anko */
+      name?: string;
+      /** @example https://q.trap.jp/api/v3/public/icon/ramdos */
+      iconUri?: string;
+    };
+    ranking: {
+        /** @example 1 */
+        rank?: number;
+        /** @example kavos */
+        userName?: string;
+        /** @example 10.5 */
+        score?: number;
+        /** @example 1 */
+        level?: number;
+        /**
+         * Format: date-time
+         * @example 2006/01/02 15:04
+         */
+        timeStamp?: string;
+        /** @example https://q.trap.jp/api/v3/public/icon/ramdos */
+        iconUri?: string;
+      }[];
+    gameResult: {
+      /** @example kavos */
+      userName?: string;
+      /** @example 10.5 */
+      score?: number;
+      /** @example 1 */
+      level?: number;
+      /**
+       * Format: date-time
+       * @example 2006/01/02 15:04
+       */
+      timeStamp?: string;
+    };
   };
   responses: never;
   parameters: never;
@@ -115,6 +198,68 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["task"];
         };
+      };
+      /** @description 正しくないリクエスト */
+      400: {
+        content: never;
+      };
+    };
+  };
+  /** 自身の情報を取得 */
+  getMe: {
+    responses: {
+      /** @description 成功 */
+      200: {
+        content: {
+          "application/json": components["schemas"]["user"];
+        };
+      };
+      /** @description 正しくないリクエスト */
+      400: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * ランキングを取得
+   * @description ランキングを取得
+   */
+  getRanking: {
+    parameters: {
+      query: {
+        /** @description 取得する個数（上位） */
+        count: number;
+        /** @description 難易度 */
+        level: number;
+      };
+    };
+    responses: {
+      /** @description 成功 */
+      200: {
+        content: {
+          "application/json": components["schemas"]["ranking"];
+        };
+      };
+      /** @description 正しくないリクエスト */
+      400: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * ランキングに登録
+   * @description ランキングに登録
+   */
+  postRanking: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["gameResult"];
+      };
+    };
+    responses: {
+      /** @description 成功 */
+      204: {
+        content: never;
       };
       /** @description 正しくないリクエスト */
       400: {
