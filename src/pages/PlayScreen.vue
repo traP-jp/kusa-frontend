@@ -787,6 +787,7 @@ console.log(all_messages);
 let i = 0;
 show_messages.value.push(all_messages[0]);
 keygraph.build(all_messages[i].yomi);
+console.log("keyfraph_builded")
 const disp = () => {
   // console.log("key candidate", keygraph.key_candidate())
   // console.log("key done", keygraph.key_done())
@@ -803,6 +804,7 @@ const misstype = ref(0);
 
 // keydownのイベント処理
 document.addEventListener("keydown", (e: KeyboardEvent) => {
+  console.log(e.key)
   if (keygraph.next(e.key)) {
     typing_state.value = {
       seq_candidate: keygraph.seq_candidates(),
