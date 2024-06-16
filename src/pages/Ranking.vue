@@ -12,16 +12,17 @@ const items = ref([
   { rank: 4, iconUri: "https://q.trap.jp/api/v3/public/icon/anko", userName: "あんこ", score: 2041, level: 1, timeStamp: '' }
 ])
 
-// const client = createClient<paths>(
-//   {
-//     baseUrl: "https://kusa.trap.show/api"
-//   });
+const client = createClient<paths>(
+  {
+    baseUrl: "https://kusa.trap.show/api"
+  });
 
-// const { data } = await client.GET("/rankings", {
-//   params: {
-//     query: { count: 10, level: 1 }
-//   }
-// })
+const { data } = await client.GET("/rankings", {
+  params: {
+    query: { count: 10, level: 1 }
+  }
+})
+console.log(data)
 </script>
 
 <template>
