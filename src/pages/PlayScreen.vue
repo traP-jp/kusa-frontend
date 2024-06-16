@@ -4,8 +4,9 @@ import { Ref, ref } from 'vue'
 import Task from '@/components/Task.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { components } from '@/openapi.gen';
+import router from '@/router/index';
 
-var score = 1500
+var score = ref(1500);
 
 const keygraph = {
   // キーチェインの作成、初期化
@@ -782,10 +783,10 @@ let i = 0;
 show_messages.value.push(all_messages[0]);
 keygraph.build(all_messages[i].yomi);
 const disp = () => {
-  console.log("key candidate", keygraph.key_candidate())
-  console.log("key done", keygraph.key_done())
-  console.log("seq candidate", keygraph.seq_candidates())
-  console.log("seq done", keygraph.seq_done())
+  // console.log("key candidate", keygraph.key_candidate())
+  // console.log("key done", keygraph.key_done())
+  // console.log("seq candidate", keygraph.seq_candidates())
+  // console.log("seq done", keygraph.seq_done())
 }
 const typing_state = ref({
   seq_candidate: keygraph.seq_candidates(),
@@ -813,8 +814,7 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
     i++;
     show_messages.value.push(all_messages[i]);
     if (i == all_messages.length) {
-      console.log("`syuuryou")
-      console.log("to Result")
+      router.push({ name: 'Result' })
     }
     keygraph.build(all_messages[i].yomi);
     typing_state.value = {
