@@ -39,9 +39,9 @@ defineProps<{ tasks: components['schemas']['task'] }>();
     <div class="_stampWrapper">
       <div class="_stampList">
         <div class="_stamp" v-for="stamp in task.stamps" :key="stamp.stampId">
-          <div class="_stamp_body">
+          <div class="_stamp_body" v-if="stamp.stampId=='6308a443-69f0-45e5-866f-56cc2c93578f'">
             <div class="_stamp_container" style="width: 1.25rem; height: 1.25rem;">
-              <img class="_img" :src="stamp.stampId" draggable="false">
+              <img class="_img" src="../assets/w.png" draggable="false">
             </div>
             <div class="_count_body">
               <div class="_dummy">{{ stamp.count }}</div>
@@ -198,12 +198,12 @@ div {
 }
 
 ._stamp {
-  margin-right: .25rem;
-  margin-bottom: .25rem;
   display: flex;
 }
 
 ._stamp_body {
+  margin-right: .25rem;
+  margin-bottom: .25rem;
   background: var(--theme-background-tertiary-default);
   display: inline-flex;
   flex-shrink: 0;
