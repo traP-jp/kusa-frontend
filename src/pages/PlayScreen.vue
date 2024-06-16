@@ -784,9 +784,9 @@ const all_messages = [{ "content": "かわいそうだね^^\n", "yomi": "かわ�
 //   await fetch("https://kusa.trap.show/api/tasks?level=1&count=20&isSensitive=false").then(res => res.json());
 // console.log(all_messages);
 
-const i = ref(0);
+let i = 0
 show_messages.value.push(all_messages[0]);
-keygraph.build(all_messages[i.value].yomi);
+keygraph.build(all_messages[i].yomi);
 console.log("keyfraph_builded")
 const disp = () => {
   // console.log("key candidate", keygraph.key_candidate())
@@ -817,13 +817,13 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
   }
   if (keygraph.is_finished()) {
     // すべての文字をタイプし終わったとき
-    i.value++;
-    console.log(all_messages[i.value].yomi)
-    show_messages.value.push(all_messages[i.value]);
-    if (i.value == all_messages.length - 1) {
+    i++;
+    console.log(all_messages[i].yomi)
+    show_messages.value.push(all_messages[i]);
+    if (i == all_messages.length - 1) {
       router.push({ name: 'Result' })
     }
-    keygraph.build(all_messages[i.value].yomi);
+    keygraph.build(all_messages[i].yomi);
     typing_state.value = {
       seq_candidate: keygraph.seq_candidates(),
       seq_done: keygraph.seq_done(),
