@@ -11,6 +11,11 @@ const routes: RouteRecordRaw[] = [
     name: 'Ranking',
     component: () => import('@/pages/Ranking.vue'),
   },
+  {
+    path: '/play',
+    name: 'Play',
+    component: () => import('@/pages/PlayScreen.vue'),
+  },
   // {
   //   path: '/rooms/:id',
   //   name: 'IndividualRoom',
