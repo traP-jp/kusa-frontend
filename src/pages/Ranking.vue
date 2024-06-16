@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Table from '@/components/Table.vue'
-import { paths } from '@/openapi.gen';
 import createClient from "openapi-fetch";
+import { paths } from '@/openapi.gen';
 
 const items = ref([
   { rank: 1, iconUri: "https://q.trap.jp/api/v3/public/icon/anko", userName: "あんこ", score: 3041, level: 1, timeStamp: '' },
