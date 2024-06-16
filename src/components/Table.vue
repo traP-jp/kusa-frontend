@@ -30,6 +30,10 @@ const items = ref([
 </template>
 
 <style scoped>
+.table_container {
+  overflow-y: scroll;
+}
+
 .row_container {
   display: grid;
   grid-template-columns: 100px 1fr 100px;

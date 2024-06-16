@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import HelloWorld from "@/components/HelloWorld.vue";
 import Button from "@/components/Button.vue";
-import Task from "@/components/Task.vue";
 </script>
 
 <template>
-  <h1 class="title">traQタイピング</h1>
+  <h2 class="sub_title">traQ 厳選投稿！</h2>
+  <h1 class="title">草タイピング</h1>
 
   <div class="button_container">
     <Button msg="easy" link="https://google.com"></Button>
@@ -38,8 +37,22 @@ import Task from "@/components/Task.vue";
   margin: 0 auto;
 }
 
+.sub_title {
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 96px;
+  margin: 0;
+  margin-bottom: 32px;
+  align-items: center;
+}
+
 .title {
-  font-size: 100px;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 128px;
   margin-bottom: 160px;
+  align-items: center;
 }
 </style>
