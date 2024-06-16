@@ -15,6 +15,7 @@
   --theme-background-tertiary-default: #E2E5E9;
   --specific-channel-hash-opened: #F0F2F5;
   --specific-count-text: rgba(73, 83, 91, 0.6);
+  --specific-main-view-background: #FFFFFF;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -34,7 +35,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -51,8 +52,8 @@ h1 {
 
 #app {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  /* padding: 2rem; */
   text-align: center;
 }
 

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { components } from '../openapi.gen.ts'
 
 const tasks = ref<components['schemas']['task']>([{
-    content: "東京科学大学",
+    content: "東京科学大学は東京医科歯科大学と東京工業大学が統合してできます",
     yomi: "とうきょうかがくだいがく", 
     iconUri: "https://q.trap.jp/api/v3/public/icon/Dye",
     authorDisplayName: "Dye",
