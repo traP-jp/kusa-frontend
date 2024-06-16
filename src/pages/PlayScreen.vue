@@ -817,10 +817,10 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
   }
   if (keygraph.is_finished()) {
     // すべての文字をタイプし終わったとき
-    i++;
+    i.value++;
     console.log(all_messages[i.value].yomi)
     show_messages.value.push(all_messages[i.value]);
-    if (i == all_messages.length - 1) {
+    if (i.value == all_messages.length - 1) {
       router.push({ name: 'Result' })
     }
     keygraph.build(all_messages[i.value].yomi);
