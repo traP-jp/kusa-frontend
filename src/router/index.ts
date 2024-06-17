@@ -21,16 +21,6 @@ const routes: RouteRecordRaw[] = [
     name: "Result",
     component: () => import("@/pages/Result.vue"),
   },
-  // {
-  //   path: '/rooms/:id',
-  //   name: 'IndividualRoom',
-  //   component: () => import('@/pages/IndividualRoom.vue'),
-  // },
-  // {
-  //   path: '/rooms/create',
-  //   name: 'CreateRoom',
-  //   component: () => import('@/pages/CreateRoom.vue'),
-  // },
   {
     // 404 page
     path: '/:pathMatch(.*)*',

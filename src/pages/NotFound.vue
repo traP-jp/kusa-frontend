@@ -3,7 +3,7 @@
 
 <template>
   <div class="container">
-    <h2 class="title">ブリ</h2>
+    <h2 class="title">Not Found</h2>
   </div>
 </template>
 
